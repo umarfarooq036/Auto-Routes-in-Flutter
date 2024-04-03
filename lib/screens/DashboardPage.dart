@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:autoroutes/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
-  const DashboardPage ({super.key});
+  const DashboardPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +12,17 @@ class DashboardPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Dashboard"),
       ),
-      body: const Center(
-        child: const Column(
+      body:  Center(
+        child: Column(
           children: [
-            Text("This is your Dashboard"),
+            const Text("This is your Dashboard"),
+            IconButton(
+              onPressed: () {
+                AutoRouter.of(context).pushAndPopUntil(const LoginRoute(),
+                    predicate: (route) => false);
+              },
+              icon: Icon(Icons.logout),
+            ),
           ],
         ),
       ),

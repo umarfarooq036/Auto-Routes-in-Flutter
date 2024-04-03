@@ -23,3 +23,7 @@ class AppRouter extends $AppRouter {
             transitionsBuilder: TransitionsBuilders.fadeIn)
       ];
 }
+
+
+// :=> This is the command we run while we build the auto routes.
+// dart run build_runner build --delete-conflicting-outputs

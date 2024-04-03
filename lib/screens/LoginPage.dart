@@ -45,7 +45,8 @@ class LoginPage extends StatelessWidget {
                   onPressed: () {
                     Fluttertoast.showToast(msg: "Logged IN");
 
-                    AutoRouter.of(context).pushAndPopUntil(const DashboardRoute(),
+                    AutoRouter.of(context).pushAndPopUntil(
+                        const DashboardRoute(),
                         predicate: (route) => false);
                   },
                   style: ElevatedButton.styleFrom(
