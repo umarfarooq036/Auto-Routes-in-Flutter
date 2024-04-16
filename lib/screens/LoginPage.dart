@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> login() async {
-    String url = 'http://localhost:3000/api/users/signin';
+    String url = 'http://192.168.137.88:3000/api/users/signin/';
     Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8',
     };
@@ -56,137 +56,149 @@ class _LoginPageState extends State<LoginPage> {
         print('Error creating post. Status code: ${response.statusCode}');
         print('Response body: ${response.body}');
       }
-    }
 
-    @override
-    void dispose() {
-      emailController.dispose();
-      passwordController.dispose();
-      super.dispose();
-    }
+    // final String uri = "http://localhost:3002/post";
+    //
+    // Map<String, dynamic> postData = {
+    //   'name': 'John Doe',
+    //   'age': 30,
+    //   'email': 'john@example.com'
+    // };
+    //
+    // final response =
+    //     await http.post(Uri.parse(uri), body: jsonEncode(postData));
+    // print(response.statusCode);
+  }
 
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        body: Center(
-          child: SizedBox(
-            width: 300,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Login",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                TextFormField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  controller: passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                  ),
-                  obscureText: true,
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  width: 300,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Fluttertoast.showToast(msg: "Logged IN");
-                      //
-                      // AutoRouter.of(context).pushAndPopUntil(
-                      //     const DashboardRoute(),
-                      //     predicate: (route) => false);
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
-                      login();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      elevation: 4,
-                      padding: const EdgeInsets.all(16),
-                    ),
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: SizedBox(
+          width: 300,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Login",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 40,
+                  fontWeight: FontWeight.w900,
                 ),
-                TextButton(
+              ),
+              TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                ),
+                obscureText: true,
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: 300,
+                child: ElevatedButton(
                   onPressed: () {
-                    Fluttertoast.showToast(msg: "Forgot Password");
+                    // Fluttertoast.showToast(msg: "Logged IN");
+                    //
+                    // AutoRouter.of(context).pushAndPopUntil(
+                    //     const DashboardRoute(),
+                    //     predicate: (route) => false);
+
+                    login();
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 4,
+                    padding: const EdgeInsets.all(16),
+                  ),
                   child: const Text(
-                    "Forget Password!",
-                    style: TextStyle(color: Colors.blue),
+                    'Login',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-                const SizedBox(height: 50),
-                Column(
-                  children: [
-                    const Text("or Sign in using: "),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Fluttertoast.showToast(msg: "Log in with google");
-                          },
-                          icon: const FaIcon(FontAwesomeIcons.google),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            Fluttertoast.showToast(msg: "Log in with facebook");
-                          },
-                          icon: const FaIcon(FontAwesomeIcons.facebook),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            Fluttertoast.showToast(msg: "Log in with twitter");
-                          },
-                          icon: const FaIcon(FontAwesomeIcons.twitter),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    TextButton(
-                      onPressed: () {
-                        // Navigator.pushReplacement(
-                        //   context,
-                        //   PageRouteBuilder(
-                        //     transitionDuration: Duration.zero,
-                        //     pageBuilder: (context, animation, secondaryAnimation) {
-                        //       return Registration();
-                        //     },
-                        //   ),
-                        // );
-                        // Navigator.pushReplacementNamed(context, '/register');
-                        // Navigator.pushNamed(context, '/register');
-                        AutoRouter.of(context).push(const Registration());
-                      },
-                      child: const Text(
-                        "Don't have an account? Register",
-                        style: TextStyle(color: Colors.blue),
+              ),
+              TextButton(
+                onPressed: () {
+                  Fluttertoast.showToast(msg: "Forgot Password");
+                },
+                child: const Text(
+                  "Forget Password!",
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+              const SizedBox(height: 50),
+              Column(
+                children: [
+                  const Text("or Sign in using: "),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Fluttertoast.showToast(msg: "Log in with google");
+                        },
+                        icon: const FaIcon(FontAwesomeIcons.google),
                       ),
+                      IconButton(
+                        onPressed: () {
+                          Fluttertoast.showToast(msg: "Log in with facebook");
+                        },
+                        icon: const FaIcon(FontAwesomeIcons.facebook),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Fluttertoast.showToast(msg: "Log in with twitter");
+                        },
+                        icon: const FaIcon(FontAwesomeIcons.twitter),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () {
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   PageRouteBuilder(
+                      //     transitionDuration: Duration.zero,
+                      //     pageBuilder: (context, animation, secondaryAnimation) {
+                      //       return Registration();
+                      //     },
+                      //   ),
+                      // );
+                      // Navigator.pushReplacementNamed(context, '/register');
+                      // Navigator.pushNamed(context, '/register');
+                      AutoRouter.of(context).push(const Registration());
+                    },
+                    child: const Text(
+                      "Don't have an account? Register",
+                      style: TextStyle(color: Colors.blue),
                     ),
-                    const SizedBox(height: 50),
-                  ],
-                )
-              ],
-            ),
+                  ),
+                  const SizedBox(height: 50),
+                ],
+              )
+            ],
           ),
         ),
-      );
-    }
+      ),
+    );
   }
+}
