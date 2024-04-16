@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> login() async {
-    String url = 'http://192.168.2.31:3000/api/users/signin';
+    String url = 'http://localhost:3000/api/users/signin';
     Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8',
     };
@@ -32,9 +32,9 @@ class _LoginPageState extends State<LoginPage> {
       'password': "hM9a7@xp",
     };
 
-    http.Response response = await http.post(Uri.parse(url),
+    final response = await http.post(Uri.parse(url),
         headers: headers, body: jsonEncode(data));
-
+        print(response);
     if (response.statusCode == 308) {
       // Extract the new location from the 'Location' header
       var newLocation = response.headers['location'];
